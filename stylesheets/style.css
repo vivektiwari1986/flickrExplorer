@@ -1,0 +1,32 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.tiled-image{
+	height: 200px;
+}
+.panel-heading{
+	padding: 0;
+}
+.more-info{
+	background: white;
+	opacity: .8;
+	color: black;
+}
+.ikon-desc-group{
+	display: block;
+	margin-bottom: 5px;
+}
+
+.ikon-div{
+	display: inline-block;
+	vertical-align: top;
+}
+.inside-more{
+	margin-top: 10px;
+}
+.ikon-desc{
+	display: inline-block;
+	max-width: 70%;
+	margin-left: 10px;
+}

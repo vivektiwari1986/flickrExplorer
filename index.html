@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Express</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<link href="stylesheets/bootstrap_new.css" rel="stylesheet">
+		<link href="stylesheets/font-awesome.css" rel="stylesheet">
+		<script src="js/libs/jquery.min.js"></script>
+		<script src="js/libs/bootstrap.min.js"></script>
+		<link href="stylesheets/style.css" rel="stylesheet">
+		<link href="stylesheets/typography.css" rel="stylesheet">
+		<script src="js/libs/underscore.min.js"></script>
+		<script src="js/libs/backbone.min.js"></script>
+		<script src="js/libs/moment.min.js"></script>
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div id="page"/>
+		</div>
+		<script type="text/template" id="item-template">
+			<div class="item col-md-3 col-xs-6">
+			<div class="row">
+				<div class="col-md-2 col-xs-2">
+					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<%= model.get("id")%>" href="#collapse<%= model.get("id")%>"> <img src="<%= model.get("media").m %>" class="tiled-image"> </a>
+				</div>
+				<div class="col-md-8 col-xs-8 more-info">
+					<div id="collapse<%= model.get("id")%>" class="collapse inside-more">
+						<div class="ikon-desc-group">
+							<div class="ikon-div">
+								<i class="icon-time"></i>
+							</div>
+							<div class="ikon-desc">
+								<%= moment(model.get("date_taken"),  "YYYY-MM-DDTHH:mm:ss").fromNow() %>
+							</div>
+						</div>
+						<% if(viewType != 'user') {%>
+						<div class="ikon-desc-group">
+							<div class="ikon-div">
+								<i class="icon-user"></i>
+							</div>
+							<div class="ikon-desc">
+								<a href="#/user/<%= model.get("author_id")%>"><%= model.get("authorName") %></a>
+							</div>
+						</div>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+		</script>
+		<script type="text/template" id="list-template">
+			<h1>Flickr Explorer</h1>
+			<div class="no-pics hidden alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+					&times;
+				</button>
+				<strong>Oops!</strong> No images found <a class="pull-right" href="#">Home Page</a>
+			</div>
+			<% if(viewType == 'user') {%>
+			<a href="#/friends/<%= authorId %>">Photos of user's friends</a>
+			<% } %>
+			<div id="list"/>
+		</script>
+	</body>
+</html>
